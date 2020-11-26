@@ -34,7 +34,7 @@ exports.findAll = (req, res) => {
     ? { title: { $regex: new RegExp(title), $options: "i" } }
     : {};
 
-  Tutorial.find(condition)
+  Tutorial.find()
     .then((data) => {
       res.send(data);
     })
