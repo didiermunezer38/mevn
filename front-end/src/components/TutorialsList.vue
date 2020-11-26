@@ -18,7 +18,7 @@
           :headers="headers"
           :items="tutorials"
           disable-pagination
-          :hide-default-footer="true"
+          :hide-default-footer="false"
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editTutorial(item.id)"
@@ -26,6 +26,19 @@
             >
             <v-icon small @click="deleteTutorial(item.id)">mdi-delete</v-icon>
           </template>
+          <!-- <template v-slot:body.append>
+            <tr>
+              <td></td>
+              <td>
+                <v-text-field
+                  v-model="calories"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+              </td>
+              <td colspan="4"></td>
+            </tr>
+          </template> -->
         </v-data-table>
 
         <v-card-actions v-if="tutorials.length > 0">
@@ -46,9 +59,10 @@ export default {
     return {
       tutorials: [],
       title: "",
+      calories: "",
       headers: [
-        { text: "Title", align: "start", sortable: false, value: "title" },
-        { text: "Description", value: "description", sortable: false },
+        { text: "Title", align: "start", sortable: true, value: "title" },
+        { text: "Description", value: "description", sortable: true },
         { text: "Status", value: "status", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
       ],
